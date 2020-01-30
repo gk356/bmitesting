@@ -78,9 +78,9 @@ def calc_retirement():
     annual_salary = int(input("Enter your Annual Salary: "))
     percent_save = input("Enter your percentage saving: (Ex. 35%)")
     percent = int(percent_save.strip('%'))
-    save_goal = int(input("Enter the retirement savings goal: ")
+    save_goal = int(input("Enter the retirement savings goal: "))
                     
-    
-    return b
+
+
 
 main()
