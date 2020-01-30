@@ -52,14 +52,27 @@ def main():
 
 
 def calc_bmi():
-    height = input("Enter height in Feet and Inches:(Ex. 5'3\") ")
-    feet, inches = height.split("'")
-    total_height = 12*int(feet)+int(inches.strip('"'))
-    weight = int(input("Enter the weights in pounds. "))
+    while True:
+        try:
+            height = input("Enter height in Feet and Inches:(Ex. 5'3\") ")
+            feet, inches = height.split("'")
+            total_height = 12*int(feet)+int(inches.strip('"'))
+            break
+        except:
+            print("Invalid. Please insert the height in correct format.")
+    
+    while True:
+        try:
+            weight = int(input("Enter the weights in pounds. "))
+            break
+        except ValueError:
+            print("Invalid. Please enter the valid weight in pounds(lbs). ")
+            
     weight_in_kg = weight*0.45
     height_in_m = total_height*0.025
     bmi = weight_in_kg/(height_in_m*height_in_m)
     bmi = round(bmi,1)
+    
     if(bmi <= 18.5):
         category = "Underweight"
         return bmi, category
@@ -74,11 +87,38 @@ def calc_bmi():
         return bmi, category
     
 def calc_retirement():
-    current_age = int(input("Enter your current age: "))
-    annual_salary = int(input("Enter your Annual Salary: "))
-    percent_save = input("Enter your percentage saving: (Ex. 35%)")
-    percent = int(percent_save.strip('%'))
-    save_goal = int(input("Enter the retirement savings goal: "))
+    while True:
+        try:
+            current_age = int(input("Enter your current age: "))
+            break
+        except ValueError:
+            print("Here Am I")
+
+    while True:
+        try:
+            annual_salary = int(input("Enter your Annual Salary: "))
+            break
+        except ValueError:
+            print("Here Am I")
+
+    while True:
+        try:
+            percent_save = input("Enter your percentage saving: (Ex. 35%)")
+            percent = int(percent_save.strip('%'))    
+            break
+        except ValueError:
+            print("Here Am I")
+
+
+    while True:
+        try:
+            save_goal = int(input("Enter the retirement savings goal: "))        
+            break
+        except ValueError:
+            print("Here Am I")
+    
+    b ="a"
+    return b 
                     
 
 
