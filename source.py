@@ -20,6 +20,7 @@ def main():
             print("!!!!!!!!!Details!!!!!!!!!!!!")
             print("Your Body Mass Index is ",bmi)
             print("According to BMI, you're ",category)
+            print()
             while True:
                 try:
                     option = int(input("Do you want to continue? If yes choose option. "))
@@ -29,7 +30,15 @@ def main():
 
                     
         elif (option == 2):
-            print(calc_retirement())
+            result = calc_retirement()
+            print()
+            print("!!!!!!!!Details!!!!!!!!")
+            if(result <= 100):
+                print("You goal will be met by ", result, " years.")
+            else:
+                print("You will not meet your goal.")
+
+            print()            
             while True:
                 try:
                     option = int(input("Do you want to continue? If yes choose option. "))
@@ -117,10 +126,21 @@ def calc_retirement():
         except ValueError:
             print("Here Am I")
     
-    b ="a"
-    return b 
-                    
 
+    while True:
+        try:
+            monthly_save = int(input("How muchwould you like to save monthly? "))
+            break
+        except ValueError:
+            print("here")
 
+    percentage = percent/100
+    total_sav_per_year = 12*(monthly_save + percentage*monthly_save)
+    total_sav_per_year = round(total_sav_per_year, 2)    
+    desired_year = save_goal/total_sav_per_year
+    desired_year = round(desired_year,2)    
+    meet_age = current_age + desired_year
+    meet_age = round(meet_age,2)
+    return meet_age
 
 main()
