@@ -1,4 +1,8 @@
+## importing sys 
 import sys
+
+##This is main function where we choose option and call the respective function
+##to calculate Body Mass Index or Retirement.
 def main():
     print("!!!!!!!!!! Welcome !!!!!!!!!!")
     print("Check Your Body Mass Index and Retirement Plan.")
@@ -59,7 +63,9 @@ def main():
                     print("Invalid Option. Integers Only.")
                 
 
-
+##Function to calculate Body mass Index
+##parameter = None
+##Return Body mass Index and respective category 
 def calc_bmi():
     while True:
         try:
@@ -94,21 +100,24 @@ def calc_bmi():
     else:
         category = "Obese"
         return bmi, category
-    
+
+##Functions which calulates retuiremenrts
+##parameter = None
+##Return at which age the retiremenet saving goal is met
 def calc_retirement():
     while True:
         try:
             current_age = int(input("Enter your current age: "))
             break
         except ValueError:
-            print("Here Am I")
+            print("Invalid Age. Please Enter valid Age.")
 
     while True:
         try:
             annual_salary = int(input("Enter your Annual Salary: "))
             break
         except ValueError:
-            print("Here Am I")
+            print("Invalid salary. Please enter valid Salary. ")
 
     while True:
         try:
@@ -116,7 +125,7 @@ def calc_retirement():
             percent = int(percent_save.strip('%'))    
             break
         except ValueError:
-            print("Here Am I")
+            print("Invalid percentage saving. Please Enter Valid percentage.")
 
 
     while True:
@@ -124,23 +133,15 @@ def calc_retirement():
             save_goal = int(input("Enter the retirement savings goal: "))        
             break
         except ValueError:
-            print("Here Am I")
+            print("Please enter the valid saving goal. ")
+    
+    savings = annual_salary + (0.15 * annual_salary)
+    saving_percent = round(percent/100,2)
+    after_savings = savings + (saving_percent * savings)
+    year_to_save = round(save_goal/after_savings,2)
+    meet_year = round(year_to_save + current_age,2)
+    return meet_year
     
 
-    while True:
-        try:
-            monthly_save = int(input("How muchwould you like to save monthly? "))
-            break
-        except ValueError:
-            print("here")
-
-    percentage = percent/100
-    total_sav_per_year = 12*(monthly_save + percentage*monthly_save)
-    total_sav_per_year = round(total_sav_per_year, 2)    
-    desired_year = save_goal/total_sav_per_year
-    desired_year = round(desired_year,2)    
-    meet_age = current_age + desired_year
-    meet_age = round(meet_age,2)
-    return meet_age
 
 main()
